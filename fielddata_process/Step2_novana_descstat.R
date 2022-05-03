@@ -5,7 +5,6 @@ library(sp)
 library(raster)
 library(rgeos)
 library(rgdal)
-library(kableExtra)
 library(xlsx)
 
 setwd("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/DiffRS/Field_data/ForZsofia/NOVANAAndP3_tozsofia/")
