@@ -56,4 +56,23 @@ for (i in 1:length(data_plot$AktID)){
   
 }
 
+# Add grouped habitats
+
+ellenberg_df$HabGroup=NA
+
+ellenberg_df$HabGroup[ellenberg_df$HabitatID == 1210 |ellenberg_df$HabitatID == 1220 |ellenberg_df$HabitatID == 1230 |
+                                    ellenberg_df$HabitatID == 2110 |ellenberg_df$HabitatID == 2120 |ellenberg_df$HabitatID == 2130
+                                  |ellenberg_df$HabitatID == 2140 | ellenberg_df$HabitatID == 2160 |ellenberg_df$HabitatID == 2170
+                                  |ellenberg_df$HabitatID == 2190 |ellenberg_df$HabitatID == 2250 |ellenberg_df$HabitatID == 2310
+                                  |ellenberg_df$HabitatID == 2330 | ellenberg_df$HabitatID == 4030 |ellenberg_df$HabitatID == 5130
+                                  |ellenberg_df$HabitatID == 6120 |ellenberg_df$HabitatID == 6210 |ellenberg_df$HabitatID == 6230
+                                  |ellenberg_df$HabitatID == 8220]="Nature dry"
+
+ellenberg_df$HabGroup[ellenberg_df$HabitatID == 1310 |ellenberg_df$HabitatID == 1320 |ellenberg_df$HabitatID == 1330 |
+                                    ellenberg_df$HabitatID == 1340 |ellenberg_df$HabitatID == 4010 |ellenberg_df$HabitatID == 6410
+                                  |ellenberg_df$HabitatID == 7120 | ellenberg_df$HabitatID == 7140 |ellenberg_df$HabitatID == 7150
+                                  |ellenberg_df$HabitatID == 7210 |ellenberg_df$HabitatID == 7220 |ellenberg_df$HabitatID == 7230]="Nature wet"
+
+ellenberg_df$HabGroup[ellenberg_df$HabitatID == 9100 ]="Forest"
+
 write.csv(ellenberg_df,"plot_db_welberg.csv")
