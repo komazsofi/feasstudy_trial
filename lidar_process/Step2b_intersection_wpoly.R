@@ -13,17 +13,16 @@ setwd("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/FeasStudy/processing/field/
 
 #lidar_metrics=stack(raster_list)
 
-density=raster("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/FeasStudy/processing/lidar/dhm2015_processed/vegetation_density_corr.tif")
+density=raster("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/FeasStudy/processing/lidar/dhm2015_processed/density_masked_a2.tif")
 crs(density)<-crs("+proj=utm +zone=32 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs")
 
 # Field data polygons
 
 frac_cover_poly=st_read("meas_poly_sf_onlyfractcrone.shp")
-frac_cover_poly_sel=frac_cover_poly[1:10,]
 
 # extract mean density value for polygons
 
-frac_cover_poly_wlidar=extract(density, frac_cover_poly_sel, fun = mean)
-
-frac_cover_poly_wlidar_c=cbind(frac_cover_poly_sel,frac_cover_poly_wlidar)
+frac_cover_poly_wlidar=extract(density, frac_cover_poly, fun = mean)
+frac_cover_poly_wlidar_c=cbind(frac_cover_poly,frac_cover_poly_wlidar)
+write.csv(frac_cover_poly_wlidar_c,"frac_cover_poly_wlidar_c.csv")
 
