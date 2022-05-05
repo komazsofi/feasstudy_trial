@@ -12,9 +12,14 @@ height_class=reclassify(height, c(c(-Inf,1,1,1,3,2,3,5,3,5,25,4,25,Inf,5)))
 
 writeRaster(height_class_bush,"height_classes.tif",overwrite=TRUE)
 
-density_masked_b1 <- mask(density, height_class_b1,maskvalue=0)
-writeRaster(density_masked_b1,"density_masked_b1.tif",overwrite=TRUE)
+#density_masked_b1 <- mask(density, height_class_b1,maskvalue=0)
+#writeRaster(density_masked_b1,"density_masked_b1.tif",overwrite=TRUE)
 
 density_masked_a1 <- mask(density, height_class_b1,maskvalue=1)
 writeRaster(density_masked_a1,"density_masked_a1.tif",overwrite=TRUE)
 
+# density above 2 m otherwise NaN
+
+height_class_a2=reclassify(height, c(c(-Inf,2,0,2,Inf,1)))
+density_masked_a2 <- mask(density, height_class_a2,maskvalue=0,updatevalue=NA)
+writeRaster(density_masked_a2,"density_masked_a2.tif",overwrite=TRUE)
