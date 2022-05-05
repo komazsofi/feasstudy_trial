@@ -27,3 +27,6 @@ proj4string(data_plot_forshp)<- CRS("+proj=utm +zone=32 +ellps=intl +towgs84=-87
 metrics <- extract(lidar_metrics,data_plot_forshp)
 
 plt_db_wlidar=cbind(data_plot_forshp@data,metrics)
+
+write.csv(metrics,"onlymetrics.csv")
+write.csv(plt_db_wlidar,"plt_db_wlidar.csv")
