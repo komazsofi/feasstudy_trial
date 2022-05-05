@@ -4,7 +4,6 @@ library(sp)
 library(raster)
 library(rgeos)
 library(rgdal)
-library(data.table)
 
 setwd("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/FeasStudy/processing/field/height_calc/")
 
@@ -30,7 +29,3 @@ names(meanheight_meas_plot)<-c("AktID","meanheight","X","Y","Count")
 
 # export
 write.csv(meanheight_meas_plot,"meanheight_plot.csv")
-
-# read polygon measurement data in
-
-meas_poly_sf=st_read("Measured_polygons.shp")
