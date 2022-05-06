@@ -1,5 +1,6 @@
 library(rgdal)
 library(raster)
+library(ggplot2)
 
 #setwd("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/FeasStudy/processing/field/novana/NOVANAAndP3_tozsofia/")
 setwd("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/FeasStudy/processing/field/height_calc/")
@@ -28,7 +29,5 @@ proj4string(data_plot_forshp)<- CRS("+proj=utm +zone=32 +ellps=intl +towgs84=-87
 # intersect
 
 metrics <- extract(lidar_metrics,data_plot_forshp)
-
 plt_db_wlidar=cbind(data_plot_forshp@data,metrics)
-
 write.csv(plt_db_wlidar,"plt_db_height_wlidar.csv")

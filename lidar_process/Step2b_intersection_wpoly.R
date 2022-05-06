@@ -3,6 +3,7 @@ library(stars)
 library(ggplot2)
 library(dplyr)
 library(raster)
+library(MASS)
 
 setwd("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/FeasStudy/processing/field/height_calc/")
 
@@ -23,6 +24,7 @@ frac_cover_poly=st_read("meas_poly_sf_onlyfractcrone.shp")
 # extract mean density value for polygons
 
 frac_cover_poly_wlidar=extract(density, frac_cover_poly, fun = mean)
+
+frac_cover_poly$geometry <- NULL
 frac_cover_poly_wlidar_c=cbind(frac_cover_poly,frac_cover_poly_wlidar)
 write.csv(frac_cover_poly_wlidar_c,"frac_cover_poly_wlidar_c.csv")
-
