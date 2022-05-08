@@ -99,10 +99,31 @@ write.xlsx(nofplots_perhab_yearly_agr, file = "nofplots_aggr.xlsx",
 biowide_dk_sf=st_as_sf(biowide_dk)
 data_plot_forshp_biow_sf=st_read("data_plot_forshp_biow_utm.shp")
 
+data_plot_forshp_biow_sf$HabGroup=NA
+
+data_plot_forshp_biow_sf$HabGroup[data_plot_forshp_biow_sf$HabitatID == 1210 |data_plot_forshp_biow_sf$HabitatID == 1220 |data_plot_forshp_biow_sf$HabitatID == 1230 |
+                                    data_plot_forshp_biow_sf$HabitatID == 2110 |data_plot_forshp_biow_sf$HabitatID == 2120 |data_plot_forshp_biow_sf$HabitatID == 2130
+                                  |data_plot_forshp_biow_sf$HabitatID == 2140 | data_plot_forshp_biow_sf$HabitatID == 2160 |data_plot_forshp_biow_sf$HabitatID == 2170
+                                  |data_plot_forshp_biow_sf$HabitatID == 2190 |data_plot_forshp_biow_sf$HabitatID == 2250 |data_plot_forshp_biow_sf$HabitatID == 2310
+                                  |data_plot_forshp_biow_sf$HabitatID == 2330 | data_plot_forshp_biow_sf$HabitatID == 4030 |data_plot_forshp_biow_sf$HabitatID == 5130
+                                  |data_plot_forshp_biow_sf$HabitatID == 6120 |data_plot_forshp_biow_sf$HabitatID == 6210 |data_plot_forshp_biow_sf$HabitatID == 6230
+                                  |data_plot_forshp_biow_sf$HabitatID == 8220]="Nature dry"
+
+data_plot_forshp_biow_sf$HabGroup[data_plot_forshp_biow_sf$HabitatID == 1310 |data_plot_forshp_biow_sf$HabitatID == 1320 |data_plot_forshp_biow_sf$HabitatID == 1330 |
+                                    data_plot_forshp_biow_sf$HabitatID == 1340 |data_plot_forshp_biow_sf$HabitatID == 4010 |data_plot_forshp_biow_sf$HabitatID == 6410
+                                  |data_plot_forshp_biow_sf$HabitatID == 7120 | data_plot_forshp_biow_sf$HabitatID == 7140 |data_plot_forshp_biow_sf$HabitatID == 7150
+                                  |data_plot_forshp_biow_sf$HabitatID == 7210 |data_plot_forshp_biow_sf$HabitatID == 7220 |data_plot_forshp_biow_sf$HabitatID == 7230]="Nature wet"
+
+data_plot_forshp_biow_sf$HabGroup[data_plot_forshp_biow_sf$HabitatID == 9100 ]="Forest"
+
+data_plot_forshp_biow_sf2=data_plot_forshp_biow_sf[(data_plot_forshp_biow_sf$Year!=2022 & is.na(data_plot_forshp_biow_sf$HabGroup)==FALSE),]
+
 ggplot()+geom_sf(data = biowide_dk_sf)+
-  geom_sf(data = data_plot_forshp_biow_sf, aes(color = Habitat),size=2)+
+  geom_sf(data = data_plot_forshp_biow_sf2, aes(color = HabGroup),size=2)+
   facet_wrap(facets = vars(Year))+
   theme_bw()
+
+ggsave(filename="NofFieldDataperyearperaggrhab.png", plot=last_plot(),width = 15, height = 10)
 
 habitats=unique(data_plot_forshp_biow_sf$HabitatID)
 
