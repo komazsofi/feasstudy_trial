@@ -14,7 +14,7 @@ ggplot(data=point_height,aes(x=canopy_height/100,y=meanheight*0.01))+geom_point(
 
 frac_cover_c2=frac_cover[is.na(frac_cover$frac_class)==FALSE,]
 
-ggplot(data=frac_cover_c2,aes(x=frac_cover_poly_wlidar,y=as.factor(frac_class)))+geom_point()+geom_boxplot()+ xlab("Vegetation density above 2m [%]") + ylab("Woody cover fraction [%]") + theme_bw(base_size = 17)+
+ggplot(data=frac_cover_c2,aes(x=frac_cover_poly_wlidar,y=as.factor(frac_class)))+geom_point()+geom_boxplot()+ xlab("Vegetation density above 2m [%]") + ylab("Woody cover fraction [%]") + theme_bw(base_size = 22)+
   scale_y_discrete(labels=c("1" = "0%", "2" = "1-10%",
                             "3" = "10-25%", "4" = "25-50%", "5"="50-100%"))
 
